@@ -1,4 +1,4 @@
-p_ball = PVector(500, 300)
+ p_ball = PVector(500, 300)
 CPT_ball1 = PVector(800, 350)
 CPT_ball2 = PVector(200, 100)
 CPT_ball3 = PVector(120, 500)
@@ -13,16 +13,24 @@ def draw():
     global CPT_ball1
     
     #player ball
+    fill(0)
     ellipse(p_ball.x, p_ball.y, 30, 30)
+    
+    
 
     #CPT ball 1
+    fill(150, 50, 100)
     ellipse(CPT_ball1.x, CPT_ball1.y, 40, 40)
     
+    
     #CPT ball 2
+    fill(255, 150, 50)
     ellipse(CPT_ball2.x, CPT_ball2.y, 40, 40)
     
     #CPT ball 3
+    fill(50, 255, 70)
     ellipse(CPT_ball3.x, CPT_ball3.y, 40, 40)
     
     #CPT ball 4
+    fill(255, 255)
     ellipse(CPT_ball4.x, CPT_ball4.y, 40, 40)
