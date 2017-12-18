@@ -3,28 +3,37 @@ CPT_ball1 = PVector(800, 350)
 CPT_ball2 = PVector(200, 100)
 CPT_ball3 = PVector(120, 500)
 CPT_ball4 = PVector(700, 50)
-lives = 3 
+lives = 3
+t = 0
  
 
 def setup():
     size(1000, 600)
-    background(255)
     
-
 def draw():
     
-    global p_ball
-    global CPT_ball1
+    global t
     
-    #player ball
-    fill(0)
-    ellipse(p_ball.x, p_ball.y, 30, 30)
-    
-    
+    background(0)
 
+    #player ball
+    
+    t = t + 0.01
+    x = noise(t)
+    x = map(x, 0, 1, 0, width)
+    y = noise(t + 10)
+    y = map(y, 0, 1, 0, width)
+    fill(255,0,0)
+    ellipse(x, y, 30, 30)
+    
     #CPT ball 1
+    t = t + 0.01 
+    a = noise(t)
+    a = map(a, 0, 5, 0, width)
+    b = noise(t + 10)
+    b = map(b, 0, 5, 0, width)
     fill(150, 50, 100)
-    ellipse(CPT_ball1.x, CPT_ball1.y, 40, 40)
+    ellipse(a, b, 40, 40)
     
     
     #CPT ball 2
@@ -40,8 +49,5 @@ def draw():
     ellipse(CPT_ball4.x, CPT_ball4.y, 40, 40)
     
     
-    if lives == 2:
-        background = (255, 255, 0)
-    if lives == 1:
-        background = (255, 0, 0)
+    
     
