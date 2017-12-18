@@ -13,7 +13,6 @@ def setup():
 def draw():
     
     global t
-    
     background(0)
 
     #player ball
@@ -21,17 +20,16 @@ def draw():
     t = t + 0.01
     x = noise(t)
     x = map(x, 0, 1, 0, width)
-    y = noise(t + 10)
+    y = noise(t + 1)
     y = map(y, 0, 1, 0, width)
     fill(255,0,0)
     ellipse(x, y, 30, 30)
     
-    #CPT ball 1
-    t = t + 0.01 
-    a = noise(t)
-    a = map(a, 0, 5, 0, width)
-    b = noise(t + 10)
-    b = map(b, 0, 5, 0, width)
+    #CPT ball 1 
+    a = noise(t+20)
+    a = map(a, 0, 1, 0, width)
+    b = noise(t + 50)
+    b = map(b, 0, 1, 0, width)
     fill(150, 50, 100)
     ellipse(a, b, 40, 40)
     
@@ -47,7 +45,3 @@ def draw():
     #CPT ball 4
     fill(150, 50, 100)
     ellipse(CPT_ball4.x, CPT_ball4.y, 40, 40)
-    
-    
-    
-    
