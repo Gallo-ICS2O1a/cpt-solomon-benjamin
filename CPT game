@@ -1,19 +1,39 @@
-p_ball = PVector(500, 300)
-CPT_ball1 = PVector(800, 350)
-CPT_ball2 = PVector(200, 100)
-CPT_ball3 = PVector(120, 500)
-CPT_ball4 = PVector(700, 50)
+ball_size = 60
+CPT_ball_size = 40
+x = 0
+y = 0
+a = 0
+b = 0
+e = 0
+f = 0
+m = 0
+n = 0
+j = 0
+k = 0
+
+
 lives = 3
+score = 0
 t = 0
  
-
 def setup():
     size(1000, 600)
     
 def draw():
-    
+    frameRate(10)
     global t
-    background(0)
+    global score
+    global x
+    global y
+    global a
+    global b
+    global e
+    global f
+    global m
+    global n
+    global j
+    global k
+    background(255)
 
     #player ball
     
@@ -23,25 +43,68 @@ def draw():
     y = noise(t + 1)
     y = map(y, 0, 1, 0, width)
     fill(255,0,0)
-    ellipse(x, y, 30, 30)
+    ellipse(x, y, ball_size, ball_size)
+    
+    
     
     #CPT ball 1 
-    a = noise(t+20)
+    a = noise(t + 20)
     a = map(a, 0, 1, 0, width)
     b = noise(t + 50)
     b = map(b, 0, 1, 0, width)
     fill(150, 50, 100)
-    ellipse(a, b, 40, 40)
+    ellipse(a, b, CPT_ball_size, CPT_ball_size)
     
-    
+   
     #CPT ball 2
+    e = noise(t + 40)
+    e = map(e, 0, 1, 0, width)
+    f = noise(t + 100)
+    f = map(f, 0, 1, 0, width)
     fill(150, 50, 100)
-    ellipse(CPT_ball2.x, CPT_ball2.y, 40, 40)
+    ellipse(e, f, CPT_ball_size, CPT_ball_size)
     
     #CPT ball 3
+    m = noise(t + 60)
+    m = map(m, 0, 1, 0, width)
+    n = noise(t + 150)
+    n = map(n, 0, 1, 0, width)
     fill(150, 50, 100)
-    ellipse(CPT_ball3.x, CPT_ball3.y, 40, 40)
+    ellipse(m, n, CPT_ball_size, CPT_ball_size)
     
     #CPT ball 4
+    j = noise(t + 80)
+    j = map(j, 0, 1, 0, width)
+    k = noise(t + 200)
+    k = map(k, 0, 1, 0, width)
     fill(150, 50, 100)
-    ellipse(CPT_ball4.x, CPT_ball4.y, 40, 40)
+    ellipse(j, k, CPT_ball_size, CPT_ball_size)
+
+    fill(255,0,0)
+    textSize(30)
+    text("Score: " + str(score), 30, 50)  
+    
+
+    
+def mousePressed():
+    
+    global score
+    global ball_size
+    global CPT_ball_size
+    global x
+    global y
+    global a
+    global b
+    global e
+    global f
+    global m
+    global n
+    global j
+    global k
+      
+    radius = ball_size / 2.0
+    distance_x = abs(mouseX - x)
+    distance_y = abs(mouseY - y)
+    hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
+    if hypotenuse <= radius:
+        score += 1
