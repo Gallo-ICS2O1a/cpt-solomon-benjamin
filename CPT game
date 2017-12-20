@@ -52,7 +52,7 @@ def draw():
     a = map(a, 0, 1, 0, width)
     b = noise(t + 50)
     b = map(b, 0, 1, 0, width)
-    fill(150, 50, 100)
+    fill(0, 255, 0)
     ellipse(a, b, CPT_ball_size, CPT_ball_size)
     
    
@@ -79,7 +79,16 @@ def draw():
     k = map(k, 0, 1, 0, width)
     fill(150, 50, 100)
     ellipse(j, k, CPT_ball_size, CPT_ball_size)
-
+    
+    radius_ball = ball_size/2
+    radius_ball2 = CPT_ball_size/2
+    yes = a - x
+    no = b - y
+    distance = sqrt(yes ** 2 + no ** 2) 
+    if distance <= radius_ball + radius_ball2:
+        score = 0 
+   
+    
     fill(255,0,0)
     textSize(30)
     text("Score: " + str(score), 30, 50)  
@@ -90,17 +99,8 @@ def mousePressed():
     
     global score
     global ball_size
-    global CPT_ball_size
     global x
     global y
-    global a
-    global b
-    global e
-    global f
-    global m
-    global n
-    global j
-    global k
       
     radius = ball_size / 2.0
     distance_x = abs(mouseX - x)
