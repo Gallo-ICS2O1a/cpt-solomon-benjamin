@@ -1,110 +1,135 @@
 ball_size = 60
 CPT_ball_size = 40
-x = 0
-y = 0
-a = 0
-b = 0
-e = 0
-f = 0
-m = 0
-n = 0
-j = 0
-k = 0
+player_ballx = 0
+player_bally = 0
+CPT_ball1x = 0
+CPT_ball1y = 0
+CPT_ball2x = 0
+CPT_ball2y = 0
+CPT_ball3x = 0
+CPT_ball3y = 0
+CPT_ball4x = 0
+CPT_ball4y = 0
 
-
-lives = 3
 score = 0
 t = 0
- 
+
 def setup():
     size(1000, 600)
-    
+
 def draw():
     frameRate(10)
-    global t
+
     global score
-    global x
-    global y
-    global a
-    global b
-    global e
-    global f
-    global m
-    global n
-    global j
-    global k
+    global lives
+    global t
+    global player_ballx
+    global player_bally
+    global CPT_ball1x
+    global CPT_ball1y
+    global CPT_ball2x
+    global CPT_ball2y
+    global CPT_ball3x
+    global CPT_ball3y
+    global CPT_ball4x
+    global CPT_ball4y
     background(255)
 
-    #player ball
-    
+    # player ball
     t = t + 0.01
-    x = noise(t)
-    x = map(x, 0, 1, 0, width)
-    y = noise(t + 1)
-    y = map(y, 0, 1, 0, width)
-    fill(255,0,0)
-    ellipse(x, y, ball_size, ball_size)
-    
-    
-    
-    #CPT ball 1 
-    a = noise(t + 20)
-    a = map(a, 0, 1, 0, width)
-    b = noise(t + 50)
-    b = map(b, 0, 1, 0, width)
-    fill(0, 255, 0)
-    ellipse(a, b, CPT_ball_size, CPT_ball_size)
-    
-   
-    #CPT ball 2
-    e = noise(t + 40)
-    e = map(e, 0, 1, 0, width)
-    f = noise(t + 100)
-    f = map(f, 0, 1, 0, width)
-    fill(150, 50, 100)
-    ellipse(e, f, CPT_ball_size, CPT_ball_size)
-    
-    #CPT ball 3
-    m = noise(t + 60)
-    m = map(m, 0, 1, 0, width)
-    n = noise(t + 150)
-    n = map(n, 0, 1, 0, width)
-    fill(150, 50, 100)
-    ellipse(m, n, CPT_ball_size, CPT_ball_size)
-    
-    #CPT ball 4
-    j = noise(t + 80)
-    j = map(j, 0, 1, 0, width)
-    k = noise(t + 200)
-    k = map(k, 0, 1, 0, width)
-    fill(150, 50, 100)
-    ellipse(j, k, CPT_ball_size, CPT_ball_size)
-    
-    radius_ball = ball_size/2
-    radius_ball2 = CPT_ball_size/2
-    yes = a - x
-    no = b - y
-    distance = sqrt(yes ** 2 + no ** 2) 
-    if distance <= radius_ball + radius_ball2:
-        score = 0 
-   
-    
-    fill(255,0,0)
-    textSize(30)
-    text("Score: " + str(score), 30, 50)  
-    
+    player_ballx = noise(t)
+    player_ballx = map(player_ballx, 0, 1, 0, width)
+    player_bally = noise(t + 1)
+    player_bally = map(player_bally, 0, 1, 0, width)
+    noStroke()
+    fill(255, 0, 0)
+    ellipse(player_ballx, player_bally, ball_size, ball_size)
 
-    
+    # CPT ball 1
+    CPT_ball1x = noise(t + 20)
+    CPT_ball1x = map(CPT_ball1x, 0, 1, 0, width)
+    CPT_ball1y = noise(t + 50)
+    CPT_ball1y = map(CPT_ball1y, 0, 1, 0, width)
+    fill(0, 255, 0)
+    ellipse(CPT_ball1x, CPT_ball1y, CPT_ball_size, CPT_ball_size)
+
+    # CPT ball 2
+    CPT_ball2x = noise(t + 40)
+    CPT_ball2x = map(CPT_ball2x, 0, 1, 0, width)
+    CPT_ball2y = noise(t + 100)
+    CPT_ball2y = map(CPT_ball2y, 0, 1, 0, width)
+    fill(0, 0, 255)
+    ellipse(CPT_ball2x, CPT_ball2y, CPT_ball_size, CPT_ball_size)
+
+    # CPT ball 3
+    CPT_ball3x = noise(t + 60)
+    CPT_ball3x = map(CPT_ball3x, 0, 1, 0, width)
+    CPT_ball3y = noise(t + 150)
+    CPT_ball3y = map(CPT_ball3y, 0, 1, 0, width)
+    fill(255, 140, 0)
+    ellipse(CPT_ball3x, CPT_ball3y, CPT_ball_size, CPT_ball_size)
+
+    # CPT ball 4
+    CPT_ball4x = noise(t + 80)
+    CPT_ball4x = map(CPT_ball4x, 0, 1, 0, width)
+    CPT_ball4y = noise(t + 200)
+    CPT_ball4y = map(CPT_ball4y, 0, 1, 0, width)
+    fill(150, 50, 100)
+    ellipse(CPT_ball4x, CPT_ball4y, CPT_ball_size, CPT_ball_size)
+
+    # CPT ball1 contact
+    radius_ball = ball_size / 2
+    radius_ball2 = CPT_ball_size / 2
+    yes = CPT_ball1x - player_ballx
+    no = CPT_ball1x - player_bally
+    distance = sqrt(yes ** 2 + no ** 2)
+    if distance <= radius_ball + radius_ball2:
+        score = 0
+        
+    # CPT ball2 contact
+    radius_ball = ball_size / 2
+    radius_ball2 = CPT_ball_size / 2
+    cool = CPT_ball2x - player_ballx
+    hot = CPT_ball2y - player_bally
+    distance = sqrt(cool ** 2 + hot ** 2)
+    if distance <= radius_ball + radius_ball2:
+        score = 0
+        
+    # CPT ball 3 contact   
+    radius_ball = ball_size / 2
+    radius_ball2 = CPT_ball_size / 2
+    apple = CPT_ball3x - player_ballx
+    pear = CPT_ball3y - player_bally
+    distance = sqrt(apple ** 2 + pear ** 2)
+    if distance <= radius_ball + radius_ball2:
+        score = 0
+        
+    # CPT ball 4 contact    
+    radius_ball = ball_size / 2
+    radius_ball2 = CPT_ball_size / 2
+    smart = CPT_ball4x - player_ballx
+    dumb = CPT_ball4y - player_bally
+    distance = sqrt(smart ** 2 + dumb ** 2)
+    if distance <= radius_ball + radius_ball2:
+        score = 0
+
+    # Score of player
+    fill(255, 0, 0)
+    textSize(30)
+    text("Score: " + str(score), 30, 50)
+
+
+
 def mousePressed():
-    
+
     global score
     global ball_size
-    global x
-    global y
-      
+    global player_ballx
+    global player_bally
+
     radius = ball_size / 2.0
-    distance_x = abs(mouseX - x)
-    distance_y = abs(mouseY - y)
+    distance_x = abs(mouseX - player_ballx)
+    distance_y = abs(mouseY - player_bally)
     hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
     if hypotenuse <= radius:
         score += 1
