@@ -12,17 +12,15 @@ CPT_ball4x = 0
 CPT_ball4y = 0
 
 score = 0
-t = 0
+location = 0
 
 def setup():
     size(1000, 600)
 
 def draw():
-    frameRate(10)
 
     global score
-    global lives
-    global t
+    global location
     global player_ballx
     global player_bally
     global CPT_ball1x
@@ -33,46 +31,49 @@ def draw():
     global CPT_ball3y
     global CPT_ball4x
     global CPT_ball4y
-    background(255)
+    background(0)
 
     # player ball
-    t = t + 0.01
-    player_ballx = noise(t)
+    location = location + 0.01
+    player_ballx = noise(location)
     player_ballx = map(player_ballx, 0, 1, 0, width)
-    player_bally = noise(t + 1)
+    player_bally = noise(location + 1)
     player_bally = map(player_bally, 0, 1, 0, width)
+    x = constrain(player_ballx, 0, 1000)
+    y = constrain(player_bally, 0, 600)
     noStroke()
     fill(255, 0, 0)
-    ellipse(player_ballx, player_bally, ball_size, ball_size)
+    ellipse(x, y, ball_size, ball_size)
+    
 
     # CPT ball 1
-    CPT_ball1x = noise(t + 20)
+    CPT_ball1x = noise(location + 20)
     CPT_ball1x = map(CPT_ball1x, 0, 1, 0, width)
-    CPT_ball1y = noise(t + 50)
+    CPT_ball1y = noise(location + 50)
     CPT_ball1y = map(CPT_ball1y, 0, 1, 0, width)
     fill(0, 255, 0)
     ellipse(CPT_ball1x, CPT_ball1y, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 2
-    CPT_ball2x = noise(t + 40)
+    CPT_ball2x = noise(location + 40)
     CPT_ball2x = map(CPT_ball2x, 0, 1, 0, width)
-    CPT_ball2y = noise(t + 100)
+    CPT_ball2y = noise(location + 100)
     CPT_ball2y = map(CPT_ball2y, 0, 1, 0, width)
     fill(0, 0, 255)
     ellipse(CPT_ball2x, CPT_ball2y, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 3
-    CPT_ball3x = noise(t + 60)
+    CPT_ball3x = noise(location + 60)
     CPT_ball3x = map(CPT_ball3x, 0, 1, 0, width)
-    CPT_ball3y = noise(t + 150)
+    CPT_ball3y = noise(location + 150)
     CPT_ball3y = map(CPT_ball3y, 0, 1, 0, width)
     fill(255, 140, 0)
     ellipse(CPT_ball3x, CPT_ball3y, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 4
-    CPT_ball4x = noise(t + 80)
+    CPT_ball4x = noise(location + 80)
     CPT_ball4x = map(CPT_ball4x, 0, 1, 0, width)
-    CPT_ball4y = noise(t + 200)
+    CPT_ball4y = noise(location + 200)
     CPT_ball4y = map(CPT_ball4y, 0, 1, 0, width)
     fill(150, 50, 100)
     ellipse(CPT_ball4x, CPT_ball4y, CPT_ball_size, CPT_ball_size)
@@ -112,7 +113,7 @@ def draw():
     distance = sqrt(smart ** 2 + dumb ** 2)
     if distance <= radius_ball + radius_ball2:
         score = 0
-
+        
     # Score of player
     fill(255, 0, 0)
     textSize(30)
