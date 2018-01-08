@@ -51,32 +51,40 @@ def draw():
     CPT_ball1x = map(CPT_ball1x, 0, 1, 0, width)
     CPT_ball1y = noise(location + 50)
     CPT_ball1y = map(CPT_ball1y, 0, 1, 0, width)
+    b = constrain(CPT_ball1x, 0, 1000)
+    s = constrain(CPT_ball1y, 0, 600)
     fill(0, 255, 0)
-    ellipse(CPT_ball1x, CPT_ball1y, CPT_ball_size, CPT_ball_size)
+    ellipse(b, s, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 2
     CPT_ball2x = noise(location + 40)
     CPT_ball2x = map(CPT_ball2x, 0, 1, 0, width)
     CPT_ball2y = noise(location + 100)
     CPT_ball2y = map(CPT_ball2y, 0, 1, 0, width)
+    a = constrain(CPT_ball2x, 0, 1000)
+    b = constrain(CPT_ball2y, 0, 600)
     fill(0, 0, 255)
-    ellipse(CPT_ball2x, CPT_ball2y, CPT_ball_size, CPT_ball_size)
+    ellipse(a, b, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 3
     CPT_ball3x = noise(location + 60)
     CPT_ball3x = map(CPT_ball3x, 0, 1, 0, width)
     CPT_ball3y = noise(location + 150)
     CPT_ball3y = map(CPT_ball3y, 0, 1, 0, width)
+    o = constrain(CPT_ball3x, 0, 1000)
+    p = constrain(CPT_ball3y, 0, 600)
     fill(255, 140, 0)
-    ellipse(CPT_ball3x, CPT_ball3y, CPT_ball_size, CPT_ball_size)
+    ellipse(o, p, CPT_ball_size, CPT_ball_size)
 
     # CPT ball 4
     CPT_ball4x = noise(location + 80)
     CPT_ball4x = map(CPT_ball4x, 0, 1, 0, width)
     CPT_ball4y = noise(location + 200)
     CPT_ball4y = map(CPT_ball4y, 0, 1, 0, width)
+    t = constrain(CPT_ball4x, 0, 1000)
+    q = constrain(CPT_ball4y, 0, 600)
     fill(150, 50, 100)
-    ellipse(CPT_ball4x, CPT_ball4y, CPT_ball_size, CPT_ball_size)
+    ellipse(t, q, CPT_ball_size, CPT_ball_size)
 
     # CPT ball1 contact
     radius_ball = ball_size / 2
