@@ -18,7 +18,7 @@ def setup():
     size(1000, 600)
 
 def draw():
-
+    frameRate(5)
     global score
     global location
     global player_ballx
@@ -122,10 +122,23 @@ def draw():
     if distance <= radius_ball + radius_ball2:
         score = 0
         
+
     # Score of player
-    fill(255, 0, 0)
-    textSize(30)
-    text("Score: " + str(score), 30, 50)
+    if score < 10:
+        textSize(30)
+        fill(255, 0, 0)
+        text("Score: " + str(score), 10, 30)
+        
+        textSize(30)
+        fill(0, 255, 0)
+        text("Click red ball to get score. if score is 10, you win", 150, 30)
+    
+    else:
+        textSize(100)
+        fill(random(255), random(255), random(255))
+        text("YOU WIN!!!", width/4, height5/2)
+    
+
 
 
 
