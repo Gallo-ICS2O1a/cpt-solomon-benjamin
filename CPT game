@@ -1,4 +1,4 @@
-ball_size = 60
+ball_size = 70
 CPT_ball_size = 40
 player_ballx = 0
 player_bally = 0
@@ -10,7 +10,6 @@ CPT_ball3x = 0
 CPT_ball3y = 0
 CPT_ball4x = 0
 CPT_ball4y = 0
-
 score = 0
 location = 0
 
@@ -18,7 +17,6 @@ def setup():
     size(1000, 600)
 
 def draw():
-    frameRate(60)
     global score
     global location
     global player_ballx
@@ -152,7 +150,7 @@ def draw():
         
         textSize(30)
         fill(0, 255, 0)
-        text("Click red ball to get score. if score is 10, you win", 150, 30)
+        text("Click red ball to get score. if score is 5, you win", 150, 30)
     
     else:
         textSize(100)
