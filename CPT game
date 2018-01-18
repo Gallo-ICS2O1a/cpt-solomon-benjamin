@@ -17,6 +17,7 @@ def setup():
     size(1000, 600)
 
 def draw():
+    frameRate(10)
     global screen
     global score
     global location
@@ -42,118 +43,6 @@ def draw():
         text("WELCOME", width/4, height/2)
         
     elif screen == "game":
-        # player ball
-        location = location + 0.01
-        player_ballx = noise(location)
-        player_ballx = map(player_ballx, 0, 1, 0, width)
-        player_bally = noise(location + 1)
-        player_bally = map(player_bally, 0, 1, 0, width)
-        maximum_X_value_playerball = constrain(player_ballx, 0, 1000)
-        minimum_Y_value_playerball = constrain(player_bally, 0, 600)
-        noStroke()
-        fill(255, 0, 0)
-        ellipse(maximum_X_value_playerball , minimum_Y_value_playerball, ball_size, ball_size)
-        
-    
-        # CPT ball 1
-        CPT_ball1x = noise(location + 20)
-        CPT_ball1x = map(CPT_ball1x, 0, 1, 0, width)
-        CPT_ball1y = noise(location + 50)
-        CPT_ball1y = map(CPT_ball1y, 0, 1, 0, width)
-        maximum_X_value_CPT_ball1x = constrain(CPT_ball1x, 0, 1000)
-        minimum_Y_value_CPT_ball1y = constrain(CPT_ball1y, 0, 600)
-        fill(0, 255, 0)
-        ellipse( maximum_X_value_CPT_ball1x,  minimum_Y_value_CPT_ball1y, CPT_ball_size, CPT_ball_size)
-        
-        # CPT ball 2
-        CPT_ball2x = noise(location + 40)
-        CPT_ball2x = map(CPT_ball2x, 0, 1, 0, width)
-        CPT_ball2y = noise(location + 100)
-        CPT_ball2y = map(CPT_ball2y, 0, 1, 0, width)
-        maximum_X_value_CPT_ball2x = constrain(CPT_ball2x, 0, 1000)
-        minimum_Y_value_CPT_ball2y = constrain(CPT_ball2y, 0, 600)
-        fill(0, 0, 255)
-        ellipse( maximum_X_value_CPT_ball2x,  minimum_Y_value_CPT_ball2y, CPT_ball_size, CPT_ball_size)
-    
-        # CPT ball 3
-        CPT_ball3x = noise(location + 60)
-        CPT_ball3x = map(CPT_ball3x, 0, 1, 0, width)
-        CPT_ball3y = noise(location + 150)
-        CPT_ball3y = map(CPT_ball3y, 0, 1, 0, width)
-        maximum_X_value_CPT_ball3x = constrain(CPT_ball3x, 0, 1000)
-        minimum_Y_value_CPT_ball3y = constrain(CPT_ball3y, 0, 600)
-        fill(255, 140, 0)
-        ellipse(  maximum_X_value_CPT_ball3x,  minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
-    
-        # CPT ball 4
-        CPT_ball4x = noise(location + 80)
-        CPT_ball4x = map(CPT_ball4x, 0, 1, 0, width)
-        CPT_ball4y = noise(location + 200)
-        CPT_ball4y = map(CPT_ball4y, 0, 1, 0, width)
-        maximum_X_value_CPT_ball4x = constrain(CPT_ball4x, 0, 1000)
-        minimum_Y_value_CPT_ball4y = constrain(CPT_ball4y, 0, 600)
-        fill(150, 50, 100)
-        ellipse(maximum_X_value_CPT_ball4x, minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
-    
-        # CPT ball1 contact
-        radius_ball = ball_size / 2
-        radius_ball2 = CPT_ball_size / 2
-        CPT_ball1x_value = CPT_ball1x - player_ballx
-        CPT_ball1y_value  = CPT_ball1x - player_bally
-        distance = sqrt(CPT_ball1x_value  ** 2 + CPT_ball1y_value  ** 2)
-        
-        if distance <= radius_ball + radius_ball2:
-            score = 0
-            background(255, 0, 0)
-        """
-        textSize(50)
-        fill(255, 0, 0)
-        text("YOUR SCORE HAS BEEN RESET", width/5, height/2)
-        """    
-        # CPT ball2 contact
-        radius_ball = ball_size / 2
-        radius_ball2 = CPT_ball_size / 2
-        CPT_ball2x_value  = CPT_ball2x - player_ballx
-        CPT_ball2y_value  = CPT_ball2y - player_bally
-        distance = sqrt(CPT_ball2x_value  ** 2 + CPT_ball2y_value  ** 2)
-        if distance <= radius_ball + radius_ball2:
-            score = 0
-            background(255, 0, 0)    
-        """
-        textSize(50)
-        fill(255, 0, 0)
-        text("YOUR SCORE HAS BEEN RESET", width/5, height/2)
-        """   
-        # CPT ball 3 contact   
-        radius_ball = ball_size / 2
-        radius_ball2 = CPT_ball_size / 2
-        CPT_ball3x_value  = CPT_ball3x - player_ballx
-        CPT_ball3y_value  = CPT_ball3y - player_bally
-        distance = sqrt(CPT_ball3x_value  ** 2 + CPT_ball3y_value  ** 2)
-        if distance <= radius_ball + radius_ball2:
-            score = 0
-            background(255, 0, 0) 
-            """
-            textSize(50)
-            fill(255, 0, 0)
-            text("YOUR SCORE HAS BEEN RESET", width/5, height/2)
-            """
-        # CPT ball 4 contact    
-        radius_ball = ball_size / 2
-        radius_ball2 = CPT_ball_size / 2
-        CPT_ball4x_value  = CPT_ball4x - player_ballx
-        CPT_ball4y_value  = CPT_ball4y - player_bally
-        distance = sqrt(CPT_ball4x_value  ** 2 + CPT_ball4y_value  ** 2)
-        if distance <= radius_ball + radius_ball2:
-            score = 0
-            background(255, 0, 0)
-            """
-            textSize(50)
-            fill(255, 0, 0)
-            text("YOUR SCORE HAS BEEN RESET", width/5, height/2)
-            """
-    
-        # Score of player
         if score < 5:
             textSize(30)
             fill(255, 0, 0)
@@ -162,7 +51,97 @@ def draw():
             textSize(30)
             fill(0, 255, 0)
             text("Click red ball to get score. if score is 5, you win", 150, 30)
+            # player ball
+            location = location + 0.01
+            player_ballx = noise(location)
+            player_ballx = map(player_ballx, 0, 1, 0, width)
+            player_bally = noise(location + 1)
+            player_bally = map(player_bally, 0, 1, 0, width)
+            maximum_X_value_playerball = constrain(player_ballx, 0, 1000)
+            minimum_Y_value_playerball = constrain(player_bally, 0, 600)
+            noStroke()
+            fill(255, 0, 0)
+            ellipse(maximum_X_value_playerball , minimum_Y_value_playerball, ball_size, ball_size)
+        
     
+            # CPT ball 1
+            CPT_ball1x = noise(location + 20)
+            CPT_ball1x = map(CPT_ball1x, 0, 1, 0, width)
+            CPT_ball1y = noise(location + 50)
+            CPT_ball1y = map(CPT_ball1y, 0, 1, 0, width)
+            maximum_X_value_CPT_ball1x = constrain(CPT_ball1x, 0, 1000)
+            minimum_Y_value_CPT_ball1y = constrain(CPT_ball1y, 0, 600)
+            fill(0, 255, 0)
+            ellipse( maximum_X_value_CPT_ball1x,  minimum_Y_value_CPT_ball1y, CPT_ball_size, CPT_ball_size)
+        
+            # CPT ball 2
+            CPT_ball2x = noise(location + 40)
+            CPT_ball2x = map(CPT_ball2x, 0, 1, 0, width)
+            CPT_ball2y = noise(location + 100)
+            CPT_ball2y = map(CPT_ball2y, 0, 1, 0, width)
+            maximum_X_value_CPT_ball2x = constrain(CPT_ball2x, 0, 1000)
+            minimum_Y_value_CPT_ball2y = constrain(CPT_ball2y, 0, 600)
+            fill(0, 0, 255)
+            ellipse( maximum_X_value_CPT_ball2x,  minimum_Y_value_CPT_ball2y, CPT_ball_size, CPT_ball_size)
+        
+            # CPT ball 3
+            CPT_ball3x = noise(location + 60)
+            CPT_ball3x = map(CPT_ball3x, 0, 1, 0, width)
+            CPT_ball3y = noise(location + 150)
+            CPT_ball3y = map(CPT_ball3y, 0, 1, 0, width)
+            maximum_X_value_CPT_ball3x = constrain(CPT_ball3x, 0, 1000)
+            minimum_Y_value_CPT_ball3y = constrain(CPT_ball3y, 0, 600)
+            fill(255, 140, 0)
+            ellipse(  maximum_X_value_CPT_ball3x,  minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
+        
+            # CPT ball 4
+            CPT_ball4x = noise(location + 80)
+            CPT_ball4x = map(CPT_ball4x, 0, 1, 0, width)
+            CPT_ball4y = noise(location + 200)
+            CPT_ball4y = map(CPT_ball4y, 0, 1, 0, width)
+            maximum_X_value_CPT_ball4x = constrain(CPT_ball4x, 0, 1000)
+            minimum_Y_value_CPT_ball4y = constrain(CPT_ball4y, 0, 600)
+            fill(150, 50, 100)
+            ellipse(maximum_X_value_CPT_ball4x, minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
+        
+            # CPT ball1 contact
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball1x_value = CPT_ball1x - player_ballx
+            CPT_ball1y_value  = CPT_ball1x - player_bally
+            distance = sqrt(CPT_ball1x_value  ** 2 + CPT_ball1y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
+  
+            # CPT ball2 contact
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball2x_value  = CPT_ball2x - player_ballx
+            CPT_ball2y_value  = CPT_ball2y - player_bally
+            distance = sqrt(CPT_ball2x_value  ** 2 + CPT_ball2y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
+    
+            # CPT ball 3 contact   
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball3x_value  = CPT_ball3x - player_ballx
+            CPT_ball3y_value  = CPT_ball3y - player_bally
+            distance = sqrt(CPT_ball3x_value  ** 2 + CPT_ball3y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
+
+            # CPT ball 4 contact    
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball4x_value  = CPT_ball4x - player_ballx
+            CPT_ball4y_value  = CPT_ball4y - player_bally
+            distance = sqrt(CPT_ball4x_value  ** 2 + CPT_ball4y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
+
+    
+
         else:
             textSize(100)
             fill(random(255), random(255), random(255))
