@@ -41,15 +41,26 @@ def draw():
         textSize(100)
         text("WELCOME", width/4, height/2)
         
+        textSize(30)
+        fill(0, 255, 0)
+        text("Click red ball to get score. if score is 5, you win", 150, 30)
+        
+        
     elif screen == "game":
+        if keyPressed:
+            if key == "r":
+                screen = "menu"
+                
+    
         if score < 5:
             textSize(30)
             fill(255, 0, 0)
             text("Score: " + str(score), 10, 30)
-        
-            textSize(30)
-            fill(0, 255, 0)
-            text("Click red ball to get score. if score is 5, you win", 150, 30)
+            
+            textSize(25)
+            fill(255)
+            text("press [r] to restart", width/4, 30)
+
             # player ball
             location = location + 0.01
             player_ballx = noise(location)
@@ -103,55 +114,53 @@ def draw():
             fill(150, 50, 100)
             ellipse(maximum_X_value_CPT_ball4x, minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
 
-    # CPT ball1 contact
-
-    radius_ball = ball_size / 2
-    radius_ball2 = CPT_ball_size / 2
-    CPT_ball1x_value = CPT_ball1x - player_ballx
-    CPT_ball1y_value  = CPT_ball1x - player_bally
-    distance = sqrt(CPT_ball1x_value  ** 2 + CPT_ball1y_value  ** 2)
-    if distance <= radius_ball + radius_ball2:
-            score = 0
-
-            if screen == "game":
-                if keyPressed:
-                    if key == "r":
-                        screen = "menu"
-                            
+            
+            
+            # CPT ball1 contact
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball1x_value = CPT_ball1x - player_ballx
+            CPT_ball1y_value  = CPT_ball1x - player_bally
+            distance = sqrt(CPT_ball1x_value  ** 2 + CPT_ball1y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
                 background(0)
                 textSize(50)
                 fill(255)
-                text("YOU GOT HIT BY A BALL!!", width/4, height/2)
-                textSize(30)
-                text("press [r] to go back", width/4, height/2 + 30)
+                text("YOU GOT HIT BY A BALL", width/4, height/2)
+                if keyPressed:
+                    if key == "m":
+                        screen = "menu"
+                
+                        
+
                 
   
-    # CPT ball2 contact
-    radius_ball = ball_size / 2
-    radius_ball2 = CPT_ball_size / 2
-    CPT_ball2x_value  = CPT_ball2x - player_ballx
-    CPT_ball2y_value  = CPT_ball2y - player_bally
-    distance = sqrt(CPT_ball2x_value  ** 2 + CPT_ball2y_value  ** 2)
-    if distance <= radius_ball + radius_ball2:
+            # CPT ball2 contact
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball2x_value  = CPT_ball2x - player_ballx
+            CPT_ball2y_value  = CPT_ball2y - player_bally
+            distance = sqrt(CPT_ball2x_value  ** 2 + CPT_ball2y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
                 score = 0
     
-    # CPT ball 3 contact   
-    radius_ball = ball_size / 2
-    radius_ball2 = CPT_ball_size / 2
-    CPT_ball3x_value  = CPT_ball3x - player_ballx
-    CPT_ball3y_value  = CPT_ball3y - player_bally
-    distance = sqrt(CPT_ball3x_value  ** 2 + CPT_ball3y_value  ** 2)
-    if distance <= radius_ball + radius_ball2:
-        score = 0
+            # CPT ball 3 contact   
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball3x_value  = CPT_ball3x - player_ballx
+            CPT_ball3y_value  = CPT_ball3y - player_bally
+            distance = sqrt(CPT_ball3x_value  ** 2 + CPT_ball3y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
     
-    # CPT ball 4 contact    
-    radius_ball = ball_size / 2
-    radius_ball2 = CPT_ball_size / 2
-    CPT_ball4x_value  = CPT_ball4x - player_ballx
-    CPT_ball4y_value  = CPT_ball4y - player_bally
-    distance = sqrt(CPT_ball4x_value  ** 2 + CPT_ball4y_value  ** 2)
-    if distance <= radius_ball + radius_ball2:
-        score = 0
+            # CPT ball 4 contact    
+            radius_ball = ball_size / 2
+            radius_ball2 = CPT_ball_size / 2
+            CPT_ball4x_value  = CPT_ball4x - player_ballx
+            CPT_ball4y_value  = CPT_ball4y - player_bally
+            distance = sqrt(CPT_ball4x_value  ** 2 + CPT_ball4y_value  ** 2)
+            if distance <= radius_ball + radius_ball2:
+                score = 0
 
     
 
