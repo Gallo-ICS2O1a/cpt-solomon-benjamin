@@ -13,10 +13,13 @@ CPT_ball4y = 0
 score = 0
 location = 0
 screen = "menu"
+hit = 0
 def setup():
     size(1000, 600)
 
 def draw():
+    frameRate(10)
+    global hit
     global screen
     global score
     global location
@@ -44,6 +47,8 @@ def draw():
         textSize(30)
         fill(0, 255, 0)
         text("Click red ball to get score. if score is 5, you win", 150, 30)
+        text("If other balls hit the red ball youre score will reset", 150, 60)
+        
         
         
     elif screen == "game":
@@ -59,7 +64,12 @@ def draw():
             
             textSize(25)
             fill(255)
-            text("press [r] to restart", width/4, 30)
+            text("press [r] to restart", 150, 30)
+            
+            textSize(30)
+            fill(0, 0, 255)
+            text("number of times hit by other balls: ", 420, 30)
+            text(abs(hit), 930, 30)
 
             # player ball
             location = location + 0.01
@@ -113,8 +123,7 @@ def draw():
             minimum_Y_value_CPT_ball4y = constrain(CPT_ball4y, 0, 600)
             fill(150, 50, 100)
             ellipse(maximum_X_value_CPT_ball4x, minimum_Y_value_CPT_ball3y, CPT_ball_size, CPT_ball_size)
-
-            
+    
             
             # CPT ball1 contact
             radius_ball = ball_size / 2
@@ -123,18 +132,14 @@ def draw():
             CPT_ball1y_value  = CPT_ball1x - player_bally
             distance = sqrt(CPT_ball1x_value  ** 2 + CPT_ball1y_value  ** 2)
             if distance <= radius_ball + radius_ball2:
-                background(0)
-                textSize(50)
-                fill(255)
-                text("YOU GOT HIT BY A BALL", width/4, height/2)
-                if keyPressed:
-                    if key == "m":
-                        screen = "menu"
+                score = 0
+                hit += 1
                 
-                        
-
-                
-  
+                if hit > 1:
+                    textSize(50)
+                    fill(150)
+                    text("YOU GOT HIT BY A BALL!!", width/4, height/2)
+    
             # CPT ball2 contact
             radius_ball = ball_size / 2
             radius_ball2 = CPT_ball_size / 2
@@ -143,6 +148,13 @@ def draw():
             distance = sqrt(CPT_ball2x_value  ** 2 + CPT_ball2y_value  ** 2)
             if distance <= radius_ball + radius_ball2:
                 score = 0
+                hit += 1
+                
+                if hit > 1:
+                    textSize(50)
+                    fill(150)
+                    text("YOU GOT HIT BY A BALL!!", width/4, height/2)
+    
     
             # CPT ball 3 contact   
             radius_ball = ball_size / 2
@@ -152,6 +164,12 @@ def draw():
             distance = sqrt(CPT_ball3x_value  ** 2 + CPT_ball3y_value  ** 2)
             if distance <= radius_ball + radius_ball2:
                 score = 0
+                hit += 1
+                
+                if hit > 1:
+                    textSize(50)
+                    fill(150)
+                    text("YOU GOT HIT BY A BALL!!", width/4, height/2)
     
             # CPT ball 4 contact    
             radius_ball = ball_size / 2
@@ -161,14 +179,18 @@ def draw():
             distance = sqrt(CPT_ball4x_value  ** 2 + CPT_ball4y_value  ** 2)
             if distance <= radius_ball + radius_ball2:
                 score = 0
-
-    
-
-    elif score == 5:
-        textSize(100)
-        fill(random(255), random(255), random(255))
-        text("YOU WIN!!!", width/4, height/2)
-    
+                hit += 1
+                
+                if hit > 1:
+                    textSize(50)
+                    fill(150)
+                    text("YOU GOT HIT BY A BALL!!", width/4, height/2)
+                
+        elif score == 5:
+            background(255)
+            textSize(100)
+            fill(0)
+            text("YOU WIN!!!", width/4, height/2)
 
 
 
